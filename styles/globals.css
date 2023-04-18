@@ -75,46 +75,53 @@
 }
 
 .hero-img {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 20px;
     transition: transform 0.5s;
+    overflow: hidden;
 }
-.one {
+.hero-img img {
+    min-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.hero-img:nth-child(1) {
     grid-column: 1/3;
     grid-row: 4/9;
 }
-.two {
+.hero-img:nth-child(2) {
     grid-column: 3/5;
     grid-row: 2/6;
 }
-.three {
+.hero-img:nth-child(3) {
     grid-column: 3/5;
     grid-row: 6/11;
 }
-.four {
+.hero-img:nth-child(4) {
     grid-column: 5/8;
     grid-row: 1/12;
 }
-.five {
+.hero-img:nth-child(5) {
     grid-column: 8/10;
     grid-row: 2/7;
 }
-.six {
+.hero-img:nth-child(6) {
     grid-column: 8/10;
     grid-row: 7/11;
 }
-.seven {
+.hero-img:nth-child(7) {
     grid-column: 10/12;
     grid-row: 4/9;
 }
 .hero-img:hover {
     z-index: 99;
     transform: scale(1.1);
-    box-shadow: 0px 0px 10px -2px #000;
+    /* border: 2px solid black; */
+    box-shadow: 0px 0px 10px -2px #b9b6b6;
 }
 .products_wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-auto-rows: auto;
     gap: 1.5rem;
 }
@@ -123,12 +130,23 @@
     flex-direction: column;
     gap: 0.5rem;
     border-radius: 10px;
-    padding: 0.5em 1em;
-    border: 1px solid black;
+    overflow: hidden;
+    padding-bottom: 0.5em;
+}
+.product_card div:not(:first-child) {
+    padding: 0 1em;
+}
+.product-img img {
+    min-width: 100%;
+    height: 490px;
+    object-fit: cover;
 }
 .product-head {
-    display: flex;
-    justify-content: space-between;
+    background: #000;
+    color: #fff;
+}
+.product-head h4 {
+    padding: 0.8em;
 }
 .product-desc {
     text-align: justify;
@@ -136,27 +154,124 @@
 .product-btn button {
     width: 100%;
     padding: 0.5rem;
+    border-radius: 5px;
+    background: #000;
+    font-size: 1rem;
+    color: #fff;
+    border: 0;
+    outline: 0;
 }
 .layout_wrapper {
     padding: 0 4rem;
 }
-.banner_wrapper {
+.brands_wrapper {
     margin-top: 5rem;
     position: relative;
     padding: 0.5rem 1.5rem;
     border: 1px solid black;
-    height: 300px;
+    /* height: 300px; */
     border-radius: 10px;
 }
-.banner-img {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.brands-img {
+    display: flex;
+    justify-content: space-between;
+}
+.brands-img img {
+    object-fit: contain;
 }
 .footer {
     display: flex;
     justify-content: center;
     padding: 1.5rem;
     margin-top: 4rem;
+}
+.product_container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.product_wrapper {
+    width: 70vw;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+.solo-img {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.img-rel {
+    display: flex;
+    gap: 0.5rem;
+}
+.desc-head {
+    font-weight: 800;
+}
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.product-qty,
+.product-btn--buy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.qty-ctrl > :is(button, span) {
+    padding: 0.2em 0.8em;
+}
+.product-btn--buy button {
+    padding: 0.7em 2em;
+}
+.banner_wrapper,
+.marquee {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.banner-head {
+    align-self: center;
+}
+.marquee-images,
+.brands-img {
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 10s linear infinite alternate;
+}
+.brands-img:nth-child(2) {
+    animation: marqueeTwo 10s linear infinite alternate;
+}
+.marquee-head {
+    margin: 1.5rem auto;
+    text-align: center;
+    font-weight: 800;
+}
+.marquee-images::-webkit-scrollbar {
+    display: none;
+}
+.marquee img,
+.brands-img {
+    margin: 0 0.5rem;
+}
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(40% + 1rem));
+    }
+}
+@keyframes marqueeTwo {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-40% + 1rem));
+    }
 }
