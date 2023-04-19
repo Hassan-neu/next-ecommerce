@@ -235,11 +235,29 @@ a :is(span, .product-desc) {
     flex-direction: column;
     gap: 0.8rem;
 }
+.product-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.product-rating {
+    color: #d4af37;
+}
 .product-qty,
 .product-btn--buy {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+.product-btn--buy button:nth-child(1),
+.qty-ctrl button {
+    background: #fff;
+    border: 2px solid black;
+    color: #000;
+}
+.product-btn--buy button {
+    background: #000;
+    border: 2px solid black;
+    color: #fff;
 }
 
 .qty-ctrl > :is(button, span) {
@@ -262,18 +280,17 @@ a :is(span, .product-desc) {
 }
 .marquee-images {
     display: flex;
-    /* animation: imageMarquee 32s linear infinite alternate; */
+    will-change: transform;
+    animation: imageMarquee 20s linear infinite alternate;
+}
+.marquee-images a {
+    text-decoration: none;
+    color: #000;
 }
 .marquee-images:hover {
     animation-play-state: paused;
 }
-.marquee-images > *a {
-    flex: 1 0 300px;
-    border: 1px solid black;
-    word-break: break-all;
-}
 
-.marquee-images,
 .brands-img {
     white-space: nowrap;
     will-change: transform;
@@ -301,7 +318,7 @@ a :is(span, .product-desc) {
         transform: translateX(0);
     }
     to {
-        transform: translateX(calc(40% + 1rem));
+        transform: translateX(calc(30% + 1rem));
     }
 }
 @keyframes imageMarquee {
@@ -309,7 +326,7 @@ a :is(span, .product-desc) {
         transform: translateX(0);
     }
     to {
-        transform: translateX(calc(-100% + 1rem));
+        transform: translateX(calc(-40% + 1rem));
     }
 }
 @keyframes marqueeTwo {
@@ -317,6 +334,6 @@ a :is(span, .product-desc) {
         transform: translateX(0);
     }
     to {
-        transform: translateX(calc(-40% + 1rem));
+        transform: translateX(calc(-30% + 1rem));
     }
 }

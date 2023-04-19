@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import {
     AiOutlineMinus,
     AiOutlinePlus,
@@ -11,8 +11,7 @@ import Link from "next/link";
 const Product = ({ product, moreProducts }) => {
     const { image, name, description, price } = product;
     const slicedProducts = moreProducts.slice(0, 9);
-    console.log({ slicedProducts });
-    console.log(product);
+    console.log(slicedProducts);
     return (
         <div className="product_container">
             <div className="product_wrapper">
