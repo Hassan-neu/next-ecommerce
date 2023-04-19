@@ -3,6 +3,12 @@
     margin: 0;
     box-sizing: border-box;
 }
+a {
+    text-decoration: none;
+}
+a :is(span, .product-desc) {
+    color: #000;
+}
 .navbar {
     position: relative;
     display: flex;
@@ -254,10 +260,25 @@
 .banner-head {
     align-self: center;
 }
+.marquee-images {
+    display: flex;
+    /* animation: imageMarquee 32s linear infinite alternate; */
+}
+.marquee-images:hover {
+    animation-play-state: paused;
+}
+.marquee-images > *a {
+    flex: 1 0 300px;
+    border: 1px solid black;
+    word-break: break-all;
+}
+
 .marquee-images,
 .brands-img {
     white-space: nowrap;
     will-change: transform;
+}
+.brands-img {
     animation: marquee 10s linear infinite alternate;
 }
 .brands-img:nth-child(2) {
@@ -271,7 +292,7 @@
 .marquee-images::-webkit-scrollbar {
     display: none;
 }
-.marquee img,
+.marquee-img,
 .brands-img {
     margin: 0 0.5rem;
 }
@@ -281,6 +302,14 @@
     }
     to {
         transform: translateX(calc(40% + 1rem));
+    }
+}
+@keyframes imageMarquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% + 1rem));
     }
 }
 @keyframes marqueeTwo {

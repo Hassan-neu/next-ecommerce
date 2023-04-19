@@ -4,6 +4,7 @@ import ProductCard from "@/components/productCard";
 import { urlFor, client } from "@/lib/client";
 export default function Home({ products }) {
     const newProduct = products.slice(0, products.length / 2);
+    console.log(products);
     return (
         <div className="container">
             <Hero products={products} />
