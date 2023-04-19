@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import {
     AiOutlineMinus,
     AiOutlinePlus,
@@ -7,11 +7,13 @@ import {
     AiOutlineStar,
 } from "react-icons/ai";
 import { client, urlFor } from "@/lib/client";
+import { useStateContext } from "@/hooks/context";
 import Link from "next/link";
 const Product = ({ product, moreProducts }) => {
+    const { qtyInc, qtyDec, quantity } = useStateContext();
     const { image, name, description, price } = product;
     const slicedProducts = moreProducts.slice(0, 9);
-    console.log(slicedProducts);
+
     return (
         <div className="product_container">
             <div className="product_wrapper">
@@ -23,24 +25,15 @@ const Product = ({ product, moreProducts }) => {
                         height={300}
                     />
                     <div className="img-rel">
-                        <Image
-                            src={urlFor(image[1]).url()}
-                            alt={product.name}
-                            width={70}
-                            height={70}
-                        />
-                        <Image
-                            src={urlFor(image[2]).url()}
-                            alt={name}
-                            width={70}
-                            height={70}
-                        />
-                        <Image
-                            src={urlFor(image[3]).url()}
-                            alt={name}
-                            width={70}
-                            height={70}
-                        />
+                        {image.slice(1).map((img, i) => (
+                            <Image
+                                src={urlFor(img).url()}
+                                alt={product.name}
+                                width={70}
+                                height={70}
+                                key={i}
+                            />
+                        ))}
                     </div>
                 </div>
                 <div className="product-details">
@@ -60,11 +53,11 @@ const Product = ({ product, moreProducts }) => {
                     <div className="product-qty">
                         <div className="qty-head">Quantity: </div>
                         <div className="qty-ctrl">
-                            <button type="button">
+                            <button type="button" onClick={() => qtyDec()}>
                                 <AiOutlineMinus />
                             </button>
-                            <span className="qty-value">0</span>
-                            <button type="button">
+                            <span className="qty-value">{quantity}</span>
+                            <button type="button" onClick={() => qtyInc()}>
                                 <AiOutlinePlus />
                             </button>
                         </div>
