@@ -1,0 +1,45 @@
+import React from "react";
+import Image from "next/image";
+import {
+    AiOutlineMinus,
+    AiOutlinePlus,
+    AiOutlineMinusCircle,
+} from "react-icons/ai";
+import { urlFor } from "@/lib/client";
+import { useStateContext } from "@/hooks/context";
+const CartList = ({ cartItem }) => {
+    const { image, name, thisQty, id, price } = cartItem;
+    const { removeFromCart, qtyDec, qtyInc } = useStateContext();
+    return (
+        <div className="cart-product">
+            <div className="cart-img">
+                <Image
+                    src={urlFor(image[0]).url()}
+                    width={100}
+                    height={100}
+                    alt={name}
+                />
+            </div>
+            <div className="cart-product-name">{name}</div>
+            <div className="cart-ctrl">
+                <div className="rmv-item">
+                    <AiOutlineMinusCircle
+                        onClick={() => removeFromCart(id, thisQty)}
+                    />
+                </div>
+                <div className="product-qty">
+                    <button type="button" onClick={() => qtyDec()}>
+                        <AiOutlineMinus />
+                    </button>
+                    <span className="qty-value">{thisQty}</span>
+                    <button type="button" onClick={() => qtyInc()}>
+                        <AiOutlinePlus />
+                    </button>
+                </div>
+                <div className="sub-total">Subtotal: ${thisQty * price}</div>
+            </div>
+        </div>
+    );
+};
+
+export default CartList;

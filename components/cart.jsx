@@ -1,28 +1,19 @@
 import React from "react";
-import {
-    AiOutlineArrowLeft,
-    AiOutlineMinus,
-    AiOutlinePlus,
-} from "react-icons/ai";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { useStateContext } from "@/hooks/context";
+import CartList from "./cartList";
 const Cart = () => {
+    const { setShowCart, totalQuantity, cartItems } = useStateContext();
     return (
         <div className="nav_shopcart">
             <div className="cart-nav">
-                <AiOutlineArrowLeft />
+                <AiOutlineArrowLeft onClick={() => setShowCart(false)} />
+                <h3>Your cart</h3>
+                <span>You have ({totalQuantity}) items in your cart</span>
             </div>
-            <div className="cart-product">
-                <div className="cart-img">Image</div>
-                <div className="product-name">product name </div>
-                <div className="prouct-qty">
-                    <button type="button">
-                        <AiOutlineMinus />
-                    </button>
-                    <span className="qty-value">0</span>
-                    <button type="button">
-                        <AiOutlinePlus />
-                    </button>
-                </div>
-            </div>
+            {cartItems?.map((item) => {
+                return <CartList key={item.id} cartItem={item} />;
+            })}
             <div className="nav-payment">
                 <button type="button">Pay with stripe</button>
             </div>

@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { AiOutlineShopping } from "react-icons/ai";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 import Cart from "./cart";
 import Link from "next/link";
+import { useStateContext } from "@/hooks/context";
 const NavBar = () => {
+    const { showCart, setShowCart, totalQuantity } = useStateContext();
     return (
         <div className="navbar">
             <div className="nav_logo">
@@ -13,10 +14,17 @@ const NavBar = () => {
                 </Link>
             </div>
             <div className="nav_shopbag">
-                <AiOutlineShopping size={40} />
-                <span className="shop_count">0</span>
+                <AiOutlineShopping
+                    size={40}
+                    onClick={() => setShowCart((prev) => !prev)}
+                />
+                {totalQuantity ? (
+                    <p className="shop_count">{totalQuantity}</p>
+                ) : (
+                    ""
+                )}
             </div>
-            {/* <Cart /> */}
+            {showCart && <Cart />}
         </div>
     );
 };

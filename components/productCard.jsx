@@ -2,8 +2,10 @@ import React from "react";
 import Image from "next/image";
 import { urlFor } from "@/lib/client";
 import Link from "next/link";
-const ProductCard = ({ products }) => {
-    const { name, price, description, image, brand, slug } = products;
+import { useStateContext } from "@/hooks/context";
+const ProductCard = ({ prod }) => {
+    const { name, price, description, image, brand, slug, _id } = prod;
+    const { addToCart } = useStateContext();
     return (
         <Link href={`/product/${slug.current}`}>
             <div className="product_card">
@@ -23,7 +25,12 @@ const ProductCard = ({ products }) => {
                 </div>
                 <div className="product-desc">Brand: {brand}</div>
                 <div className="product-btn">
-                    <button type="button">Add to cart</button>
+                    <button
+                        type="button"
+                        onClick={() => addToCart(name, image, 1, _id, price)}
+                    >
+                        Add to cart
+                    </button>
                 </div>
             </div>
         </Link>

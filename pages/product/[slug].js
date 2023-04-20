@@ -10,8 +10,8 @@ import { client, urlFor } from "@/lib/client";
 import { useStateContext } from "@/hooks/context";
 import Link from "next/link";
 const Product = ({ product, moreProducts }) => {
-    const { qtyInc, qtyDec, quantity } = useStateContext();
-    const { image, name, description, price } = product;
+    const { qtyInc, qtyDec, qty, addToCart } = useStateContext();
+    const { image, name, description, price, _id } = product;
     const slicedProducts = moreProducts.slice(0, 9);
 
     return (
@@ -49,21 +49,28 @@ const Product = ({ product, moreProducts }) => {
                         <div className="desc-head">Details: </div>
                         <div className="desc-details">{description}</div>
                     </div>
-                    <div className="producr-price">${price}</div>
+                    <div className="product-price">${price}</div>
                     <div className="product-qty">
                         <div className="qty-head">Quantity: </div>
                         <div className="qty-ctrl">
                             <button type="button" onClick={() => qtyDec()}>
                                 <AiOutlineMinus />
                             </button>
-                            <span className="qty-value">{quantity}</span>
+                            <span className="qty-value">{qty}</span>
                             <button type="button" onClick={() => qtyInc()}>
                                 <AiOutlinePlus />
                             </button>
                         </div>
                     </div>
                     <div className="product-btn--buy">
-                        <button type="button">Add to cart</button>
+                        <button
+                            type="button"
+                            onClick={() =>
+                                addToCart(name, image, qty, _id, price)
+                            }
+                        >
+                            Add to cart
+                        </button>
                         <button type="button">Buy Now</button>
                     </div>
                 </div>

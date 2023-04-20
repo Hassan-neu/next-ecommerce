@@ -10,7 +10,7 @@ export default function Home({ products }) {
             <div className="products_wrapper">
                 {/*Products are to be dynamic*/}
                 {products?.map((product) => {
-                    return <ProductCard key={product._id} products={product} />;
+                    return <ProductCard key={product._id} prod={product} />;
                 })}
             </div>
             <Banner />
