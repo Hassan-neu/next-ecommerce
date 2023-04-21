@@ -9,7 +9,7 @@ import { urlFor } from "@/lib/client";
 import { useStateContext } from "@/hooks/context";
 const CartList = ({ cartItem }) => {
     const { image, name, thisQty, id, price } = cartItem;
-    const { removeFromCart } = useStateContext();
+    const { removeFromCart, toggleCartQty } = useStateContext();
     return (
         <div className="cart-product">
             <div className="cart-img">
@@ -24,15 +24,21 @@ const CartList = ({ cartItem }) => {
             <div className="cart-ctrl">
                 <div className="rmv-item">
                     <AiOutlineMinusCircle
-                        onClick={() => removeFromCart(id, thisQty)}
+                        onClick={() => removeFromCart(id, price, thisQty)}
                     />
                 </div>
                 <div className="product-qty">
-                    <button type="button">
+                    <button
+                        type="button"
+                        onClick={() => toggleCartQty(id, "dec")}
+                    >
                         <AiOutlineMinus />
                     </button>
                     <span className="qty-value">{thisQty}</span>
-                    <button type="button">
+                    <button
+                        type="button"
+                        onClick={() => toggleCartQty(id, "inc")}
+                    >
                         <AiOutlinePlus />
                     </button>
                 </div>
