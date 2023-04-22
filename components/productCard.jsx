@@ -20,10 +20,10 @@ const ProductCard = ({ prod }) => {
                 <div className="product-head">
                     <h4>{name}</h4>
                 </div>
-                <div>
+                <div className="product-price">
                     <span>${price}</span>
                 </div>
-                <div className="product-desc">Brand: {brand}</div>
+                <div className="product-brand">{brand}</div>
                 <div className="product-btn">
                     <button
                         type="button"

@@ -6,8 +6,11 @@
 a {
     text-decoration: none;
 }
-a :is(span, .product-desc) {
+a :is(span, .product-brand) {
     color: #000;
+}
+button:hover {
+    cursor: pointer;
 }
 .navbar {
     position: relative;
@@ -78,6 +81,12 @@ a :is(span, .product-desc) {
     align-self: flex-end;
     color: #ff0000;
 }
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .sub-total {
     font-weight: 800;
 }
@@ -85,10 +94,25 @@ a :is(span, .product-desc) {
     margin-top: auto;
     /* justify-self: flex-end; */
 }
-.nav-payment button {
+.nav-payment button,
+a .cart-empty-btn button {
     width: 100%;
     padding: 0.5rem;
     border-radius: 10px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+}
+.product-total {
+    margin-top: auto;
+    margin-bottom: 0.5rem;
+}
+.nav-payment button:active {
+    transform: scale(0.98);
+}
+a .cart-empty-btn button:active {
+    transform: scale(0.98);
 }
 .hero_wrapper {
     display: flex;
@@ -179,9 +203,10 @@ a :is(span, .product-desc) {
     gap: 0.5rem;
     border-radius: 10px;
     overflow: hidden;
-    padding-bottom: 0.5em;
+    height: 100%;
 }
-.product_card div:not(:first-child) {
+.product-price,
+.product-brand {
     padding: 0 1em;
 }
 .product-img img {
@@ -197,8 +222,12 @@ a :is(span, .product-desc) {
 .product-head h4 {
     padding: 0.8em;
 }
-.product-desc {
+.product-brand {
     text-align: justify;
+    font-weight: 800;
+}
+.product-btn {
+    margin-top: auto;
 }
 .product-btn button {
     width: 100%;

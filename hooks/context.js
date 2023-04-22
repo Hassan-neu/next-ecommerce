@@ -6,7 +6,7 @@ export const StateContext = ({ children }) => {
     const [qty, setQty] = useState(1);
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
-    const [totaPrice, setTotalPrice] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
     const qtyInc = () => {
         setQty((prev) => prev + 1);
@@ -74,6 +74,7 @@ export const StateContext = ({ children }) => {
                 cartItems,
                 removeFromCart,
                 toggleCartQty,
+                totalPrice,
             }}
         >
             {children}

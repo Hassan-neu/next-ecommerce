@@ -42,7 +42,12 @@ const CartList = ({ cartItem }) => {
                         <AiOutlinePlus />
                     </button>
                 </div>
-                <div className="sub-total">Subtotal: ${thisQty * price}</div>
+                <div className="sub-total">
+                    Subtotal: $
+                    {(thisQty * price)
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </div>
             </div>
         </div>
     );
