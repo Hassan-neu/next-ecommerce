@@ -95,7 +95,8 @@ button:hover {
     /* justify-self: flex-end; */
 }
 .nav-payment button,
-a .cart-empty-btn button {
+a .cart-empty-btn button,
+.paystack-btn button {
     width: 100%;
     padding: 0.5rem;
     border-radius: 10px;
@@ -396,4 +397,28 @@ a .cart-empty-btn button:active {
     to {
         transform: translateX(calc(-30% + 1rem));
     }
+}
+.checkout_container {
+    display: flex;
+    margin: 5% auto;
+    align-items: center;
+    justify-content: center;
+    width: 635px;
+    height: 430px;
+    /* background: linear-gradient(to right, #000 50%, #fff 50%); */
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+}
+.form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+.form-group label {
+    font-size: 1.3rem;
+    /* color: #fff; */
 }

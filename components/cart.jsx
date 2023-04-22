@@ -37,7 +37,11 @@ const Cart = () => {
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </h4>
                 </div>
-                <button type="button">Pay with stripe</button>
+                <Link href="/paymentGateway">
+                    <button type="button" onClick={() => setShowCart(false)}>
+                        Pay
+                    </button>
+                </Link>
             </div>
         </div>
     );
