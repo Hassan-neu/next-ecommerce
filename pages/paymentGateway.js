@@ -4,43 +4,40 @@ import { useStateContext } from "@/hooks/context";
 import { useRouter } from "next/router";
 const PaymentGateway = () => {
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const { totalPrice } = useStateContext();
-
+    const publicKey = "pk_test_d6ac81974b42368a4d3845ac89ba4ad84939000e";
     const route = useRouter();
     const componentProps = {
+        reference: new Date().getTime().toString(),
         email,
-        amount: totalPrice * 100,
-        publicKey: "pk_test_d6ac81974b42368a4d3845ac89ba4ad84939000e",
+        amount: totalPrice * 100 * 460,
+        metadata: {
+            name,
+        },
+        publicKey,
         text: "Pay Now",
         onSuccess: () =>
             console.log("Thanks for doing business with us! Come back soon!!"),
-        // onClose: () => route.push("/"),
+        onClose: () => route.push("/"),
     };
+
     return (
         <div className="checkout_container">
             <form
                 id="paymentForm"
                 className="form_container"
-                onSubmit={(e) => e.preventDefault}
+                onSubmit={(e) => e.preventDefault()}
             >
-                {/* <div className="form-group">
-                    <label htmlFor="first-name">First Name:</label>
+                <div className="form-group">
+                    <label htmlFor="first-name">Name:</label>
                     <input
-                        value={firstName}
+                        value={name}
                         type="text"
                         id="first-name"
-                        onChange={(e) => setFirstName(e.target.value)}
+                        onChange={(e) => setName(e.target.value)}
                     />
-                </div> */}
-                {/* <div className="form-group">
-                    <label htmlFor="last-name">Last Name:</label>
-                    <input
-                        value={lastName}
-                        type="text"
-                        id="last-name"
-                        onChange={(e) => setLastName(e.target.value)}
-                    />
-                </div> */}
+                </div>
                 <div className="form-group">
                     <label htmlFor="email">Email Address:</label>
                     <input

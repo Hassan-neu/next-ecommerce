@@ -45,6 +45,7 @@ const CartList = ({ cartItem }) => {
                 <div className="sub-total">
                     Subtotal: $
                     {(thisQty * price)
+                        .toFixed(2)
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </div>
