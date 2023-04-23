@@ -11,7 +11,7 @@ import { useStateContext } from "@/hooks/context";
 import Link from "next/link";
 import Head from "next/head";
 const Product = ({ product, moreProducts }) => {
-    const { qtyInc, qtyDec, qty, addToCart } = useStateContext();
+    const { qtyInc, qtyDec, qty, addToCart, setTotalPrice } = useStateContext();
     const { image, name, description, price, _id } = product;
     const slicedProducts = moreProducts.slice(0, 9);
 
@@ -54,7 +54,7 @@ const Product = ({ product, moreProducts }) => {
                             <div className="desc-head">Details: </div>
                             <div className="desc-details">{description}</div>
                         </div>
-                        <div className="product-price">${price}</div>
+                        <div className="product-cart-price">${price}</div>
                         <div className="product-qty">
                             <div className="qty-head">Quantity: </div>
                             <div className="qty-ctrl">
@@ -76,7 +76,12 @@ const Product = ({ product, moreProducts }) => {
                             >
                                 Add to cart
                             </button>
-                            <button type="button">Buy Now</button>
+                            <Link
+                                href="/paymentGateway"
+                                onClick={setTotalPrice(price * qty)}
+                            >
+                                <button type="button">Buy Now</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
