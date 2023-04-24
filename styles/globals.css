@@ -63,6 +63,9 @@ button:hover {
     z-index: 999;
     font-family: "Ysabeau", sans-serif;
 }
+.nav_shopcart::-webkit-scrollbar {
+    display: none;
+}
 .cart-nav {
     display: flex;
     justify-content: space-between;
@@ -107,7 +110,8 @@ button:hover {
 }
 .nav-payment button,
 a .cart-empty-btn button,
-.paystack-btn button {
+.paystack-btn button,
+.success_container button {
     width: 100%;
     padding: 0.5rem;
     border-radius: 10px;
@@ -115,6 +119,9 @@ a .cart-empty-btn button,
     color: #fff;
     text-transform: uppercase;
     border: none;
+}
+.success-text {
+    text-align: center;
 }
 .product-total {
     margin-top: auto;
@@ -214,6 +221,9 @@ a .cart-empty-btn button:active {
     grid-auto-rows: 350px;
     gap: 1.5rem;
     font-family: "Ysabeau", sans-serif;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 3em 0;
 }
 .product_card {
     display: flex;
@@ -422,7 +432,8 @@ a .cart-empty-btn button:active {
         transform: translateX(calc(-30% + 1rem));
     }
 }
-.checkout_container {
+.checkout_container,
+.success_container {
     display: flex;
     margin: 5% auto;
     align-items: center;
@@ -434,10 +445,17 @@ a .cart-empty-btn button:active {
     /* background: linear-gradient(to right, #000 50%, #fff 50%); */
     box-shadow: 0px 0px 50px -10px rgba(0, 0, 0, 0.5);
 }
-.form_container {
+.success_container {
+    width: 400px;
+}
+.form_container,
+.success-wrapper {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+.success-wrapper {
+    align-items: center;
 }
 .form-group {
     display: flex;
@@ -467,7 +485,7 @@ a .cart-empty-btn button:active {
     .hero_img-container {
         display: flex;
         position: relative;
-        height: 100vh;
+        height: 60vh;
     }
     .hero_img-container .hero-img {
         background-repeat: no-repeat;
@@ -475,7 +493,7 @@ a .cart-empty-btn button:active {
         top: 0;
         left: 0;
         transform: translate(-50%, 0);
-        width: 350px;
+        width: 265px;
         height: 100%;
         opacity: 0;
         transition: opacity 0.5s ease-in;
@@ -521,12 +539,11 @@ a .cart-empty-btn button:active {
         box-shadow: 0px 0px 10px -2px #b9b6b6;
         padding: 0.8em;
     }
-    .nav_shopcart::-webkit-scrollbar {
-        display: none;
-    }
+
     .nav-payment button,
     a .cart-empty-btn button,
-    .paystack-btn button {
+    .paystack-btn button,
+    .success-wrapper button {
         font-size: 0.7rem;
     }
     .brands-img:nth-child(2) {
@@ -534,6 +551,10 @@ a .cart-empty-btn button:active {
     }
     .brands-img {
         animation: marquee 5s linear infinite alternate;
+    }
+    .solo-img img {
+        max-width: 100%;
+        height: auto;
     }
     .cart-empty a {
         width: 100%;
@@ -547,11 +568,13 @@ a .cart-empty-btn button:active {
     .marquee-images {
         animation: imageMarquee 5s linear infinite alternate;
     }
-    .checkout_container {
+    .checkout_container,
+    .success_container {
         width: 90vw;
         height: 300px;
     }
-    .form_container {
+    .form_container,
+    .success-wrapper {
         width: 250px;
     }
     .form-group {
@@ -587,7 +610,18 @@ a .cart-empty-btn button:active {
         }
     }
 }
-
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .layout_wrapper {
+        padding: 0 1em;
+    }
+    .hero_img-container {
+        display: grid;
+        grid-template-columns: repeat(11, 6vw);
+        grid-template-rows: repeat(11, 3vw);
+        column-gap: 0.8rem;
+        row-gap: 0.5rem;
+    }
+}
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .hero_img-container {
         display: grid;

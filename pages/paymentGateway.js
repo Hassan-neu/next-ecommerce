@@ -17,8 +17,7 @@ const PaymentGateway = () => {
         },
         publicKey,
         text: "Pay Now",
-        onSuccess: () =>
-            console.log("Thanks for doing business with us! Come back soon!!"),
+        onSuccess: () => route.push("/successPage"),
         onClose: () => route.push("/"),
     };
 
@@ -48,15 +47,6 @@ const PaymentGateway = () => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                {/* <div className="form-group">
-                    <label htmlFor="last-name">Phone number:</label>
-                    <input
-                        value={phone}
-                        type="text"
-                        id="last-name"
-                        onChange={(e) => setPhone(e.target.value)}
-                    />
-                </div> */}
                 <div className="paystack-btn">
                     <PaystackButton {...componentProps} />
                 </div>
