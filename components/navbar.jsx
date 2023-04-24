@@ -10,7 +10,9 @@ const NavBar = () => {
         <div className="navbar">
             <div className="nav_logo">
                 <Link href="/">
-                    <Image src="/logo.svg" alt="logo" width={40} height={40} />
+                    {/* <Image src="/logo.svg" alt="logo" width={40} height={40} />
+                     */}
+                    <h3>NEUTER</h3>
                 </Link>
             </div>
             <div className="nav_shopbag">

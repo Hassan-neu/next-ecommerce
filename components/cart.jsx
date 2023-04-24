@@ -31,7 +31,7 @@ const Cart = () => {
             <div className="nav-payment">
                 <div className="product-total">
                     <h4>
-                        Total Price:
+                        Total Price: $
                         {totalPrice
                             .toFixed(2)
                             .toString()
