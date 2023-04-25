@@ -244,8 +244,9 @@ a .cart-empty-btn button:active {
     display: block;
 }
 .product-head {
-    background: #000;
-    color: #fff;
+    color: #000;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
 }
 .product-head h4 {
     padding: 0.8em;
