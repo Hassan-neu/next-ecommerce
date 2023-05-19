@@ -36,24 +36,35 @@ export const StateContext = ({ children }) => {
     };
     const toggleCartQty = (id, action) => {
         const foundProduct = cartItems.find((cartItem) => cartItem.id === id);
-        const newProducts = cartItems.filter(
-            (cartItems) => cartItems.id !== id
-        );
         if (action === "inc") {
-            setCartItems([
-                ...newProducts,
-                { ...foundProduct, thisQty: foundProduct.thisQty + 1 },
-            ]);
+            setCartItems((prevItems) =>
+                prevItems.map((item) => {
+                    if (item.id === id) {
+                        return {
+                            ...item,
+                            thisQty: foundProduct.thisQty + 1,
+                        };
+                    }
+                    return item;
+                })
+            );
             setTotalQuantity((prevTotal) => prevTotal + 1);
             setTotalPrice(
                 (prevTotalPrice) => prevTotalPrice + foundProduct.price
             );
         } else if (action === "dec") {
             if (foundProduct.thisQty > 1) {
-                setCartItems([
-                    ...newProducts,
-                    { ...foundProduct, thisQty: foundProduct.thisQty - 1 },
-                ]);
+                setCartItems((prevItems) =>
+                    prevItems.map((item) => {
+                        if (item.id === id) {
+                            return {
+                                ...item,
+                                thisQty: foundProduct.thisQty - 1,
+                            };
+                        }
+                        return item;
+                    })
+                );
                 setTotalQuantity((prevTotal) => prevTotal - 1);
                 setTotalPrice(
                     (prevTotalPrice) => prevTotalPrice - foundProduct.price
